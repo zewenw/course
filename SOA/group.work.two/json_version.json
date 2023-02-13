@@ -1,0 +1,268 @@
+//getSubmissions
+//json schema
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/Group_work_two.schema.json",
+  "title": "getSubmission",
+  "description": "returning all submissions to a given assignment",
+  "type": "object",
+  "properties": {
+    "assignment": {
+      "type": "object",
+      "properties": {
+        "dueDate": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "dueDate"
+      ]
+    },
+    "module": {
+      "type": "object",
+      "properties": {
+        "code": {
+          "type": "string"
+        },
+        "title": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "code",
+        "title"
+      ]
+    },
+    "forAssignment": {
+      "type": "array",
+      "items": [
+        {
+          "type": "object",
+          "properties": {
+            "submission": {
+              "type": "object",
+              "properties": {
+                "date": {
+                  "type": "string"
+                },
+                "subNr": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "student": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "email"
+                  ]
+                },
+                "feedback": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    },
+                    "mark": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "text",
+                    "mark"
+                  ]
+                }
+              },
+              "required": [
+                "date",
+                "subNr",
+                "url",
+                "student",
+                "feedback"
+              ]
+            }
+          },
+          "required": [
+            "submission"
+          ]
+        },
+        {
+          "type": "object",
+          "properties": {
+            "submission": {
+              "type": "object",
+              "properties": {
+                "date": {
+                  "type": "string"
+                },
+                "subNr": {
+                  "type": "string"
+                },
+                "url": {
+                  "type": "string"
+                },
+                "student": {
+                  "type": "object",
+                  "properties": {
+                    "name": {
+                      "type": "string"
+                    },
+                    "email": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "name",
+                    "email"
+                  ]
+                },
+                "feedback": {
+                  "type": "object",
+                  "properties": {
+                    "text": {
+                      "type": "string"
+                    },
+                    "mark": {
+                      "type": "integer"
+                    }
+                  },
+                  "required": [
+                    "text",
+                    "mark"
+                  ]
+                }
+              },
+              "required": [
+                "date",
+                "subNr",
+                "url",
+                "student",
+                "feedback"
+              ]
+            }
+          },
+          "required": [
+            "submission"
+          ]
+        }
+      ]
+    }
+  },
+  "required": [
+    "assignment",
+    "module",
+    "forAssignment"
+  ]
+}
+// json context
+{
+    "Assignment": {
+        "dueDate": "dateTime"
+    },
+    "Module": {
+        "code": "course_code",
+        "title": "xxxx"
+    },
+    "forAssignment": [{
+        "submission": {
+            "date": "submit_date",
+            "subNr": "subNr",
+            "url": "file_url",
+            "Student": {
+                "name": "xxx",
+                "email": "xxx"
+            },
+            "Feedback": {
+                "text": "xxx",
+                "mark": 70
+            }
+
+        }
+    }, {
+        "submission": {
+            "date": "submit_date",
+            "subNr": "subNr",
+            "url": "file_url",
+            "Student": {
+                "name": "xxx",
+                "email": "xxx"
+            },
+            "Feedback": {
+                "text": "xxx",
+                "mark": 70
+            }
+
+        }
+    }]
+}
+
+//submitFeedback
+//json-schema
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "http://example.com/Group_work_two.schema.json",
+  "title": "submitFeedback",
+  "description": "providing a mark and feedback for a given submission",
+  "type": "object",
+  "properties": {
+    "feedback": {
+      "type": "object",
+      "properties": {
+        "text": {
+          "type": "string"
+        },
+        "mark": {
+          "type": "integer"
+        }
+      },
+      "required": [
+        "text",
+        "mark"
+      ]
+    },
+    "submission": {
+      "type": "object",
+      "properties": {
+        "date": {
+          "type": "string"
+        },
+        "subNr": {
+          "type": "string"
+        },
+        "url": {
+          "type": "string"
+        }
+      },
+      "required": [
+        "date",
+        "subNr",
+        "url"
+      ]
+    }
+  },
+  "required": [
+    "feedback",
+    "submission"
+  ]
+}
+//json
+{
+    "feedback": {
+        "text": "xxxx",
+        "mark": 77
+    },
+    "submission": {
+        "date": "submit_date",
+        "subNr": "subNr",
+        "url": "file_url"
+    }
+}
