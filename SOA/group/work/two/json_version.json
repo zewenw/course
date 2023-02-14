@@ -7,7 +7,7 @@
   "description": "returning all submissions to a given assignment",
   "type": "object",
   "properties": {
-    "assignment": {
+    "Assignment": {
       "type": "object",
       "properties": {
         "dueDate": {
@@ -18,7 +18,7 @@
         "dueDate"
       ]
     },
-    "module": {
+    "Module": {
       "type": "object",
       "properties": {
         "code": {
@@ -51,7 +51,7 @@
                 "url": {
                   "type": "string"
                 },
-                "student": {
+                "Student": {
                   "type": "object",
                   "properties": {
                     "name": {
@@ -65,29 +65,13 @@
                     "name",
                     "email"
                   ]
-                },
-                "feedback": {
-                  "type": "object",
-                  "properties": {
-                    "text": {
-                      "type": "string"
-                    },
-                    "mark": {
-                      "type": "integer"
-                    }
-                  },
-                  "required": [
-                    "text",
-                    "mark"
-                  ]
                 }
               },
               "required": [
                 "date",
                 "subNr",
                 "url",
-                "student",
-                "feedback"
+                "Student"
               ]
             }
           },
@@ -110,7 +94,7 @@
                 "url": {
                   "type": "string"
                 },
-                "student": {
+                "Student": {
                   "type": "object",
                   "properties": {
                     "name": {
@@ -124,29 +108,13 @@
                     "name",
                     "email"
                   ]
-                },
-                "feedback": {
-                  "type": "object",
-                  "properties": {
-                    "text": {
-                      "type": "string"
-                    },
-                    "mark": {
-                      "type": "integer"
-                    }
-                  },
-                  "required": [
-                    "text",
-                    "mark"
-                  ]
                 }
               },
               "required": [
                 "date",
                 "subNr",
                 "url",
-                "student",
-                "feedback"
+                "Student"
               ]
             }
           },
@@ -158,8 +126,8 @@
     }
   },
   "required": [
-    "assignment",
-    "module",
+    "Assignment",
+    "Module",
     "forAssignment"
   ]
 }
@@ -180,12 +148,7 @@
             "Student": {
                 "name": "xxx",
                 "email": "xxx"
-            },
-            "Feedback": {
-                "text": "xxx",
-                "mark": 70
             }
-
         }
     }, {
         "submission": {
@@ -195,12 +158,7 @@
             "Student": {
                 "name": "xxx",
                 "email": "xxx"
-            },
-            "Feedback": {
-                "text": "xxx",
-                "mark": 70
             }
-
         }
     }]
 }

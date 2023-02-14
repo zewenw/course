@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--getSubmissions-->
+<!DOCTYPE Feedback [
+
+<!ELEMENT Feedback (Assignment, Module, forAssignment*)>
+<!ELEMENT Assignment EMPTY>
+<!ATTLIST Assignment
+						dueDate CDATA #REQUIRED>
+<!ELEMENT Module EMPTY>
+<!ATTLIST Module
+                        code CDATA #REQUIRED
+                        title CDATA #REQUIRED>
+<!ELEMENT forAssignment (submission*)>
+<!ELEMENT submission (Student)>
+<!ATTLIST submission
+                        date CDATA #REQUIRED
+												subNr CDATA #REQUIRED
+                        url CDATA #REQUIRED>
+<!ELEMENT Student EMPTY>
+<!ATTLIST Student
+                        name CDATA #REQUIRED
+												email CDATA #REQUIRED>
+]>
+<Feedback>
+	<Assignment dueDate="2023/12/12"/>
+	<Module code="50" title = "SOA"/>
+	<forAssignment>
+    <submission date="2023/12/12" subNr="subNr" url="url">
+      <Student name="student_1" email="email_1"/>
+    </submission>
+    <submission date="2023/12/12" subNr="subNr" url="url">
+      <Student name="student_2" email="email_2"/>
+    </submission>
+  </forAssignment>
+</Feedback>
