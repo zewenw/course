@@ -1,20 +1,34 @@
+class Coor:
+
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+
 def new_envelope(old_envelope, new_rectangle):
     rx0 = new_rectangle[0]
     rx1 = new_rectangle[1]
-    rx2 = new_rectangle[2]
-    for x, y in old_envelope.items():
-        # ´¦ÀíÇ°Ãæ³¬¹ýÔ­ÓÐÐÅ·âµÄµÚÒ»¸ö×ø±ê
-        if x > rx0 & x < rx2:
-            if y < rx2:
-                old_envelope[x] = rx2
-    #     ´¦ÀíºóÃæ³¬¹ýÔ­ÓÐÐÅ·âµÄ×îºóÒ»¸ö×ø±ê
+    rh = new_rectangle[2]
+    for item in old_envelope:
+        # å¤„ç†å‰é¢è¶…è¿‡åŽŸæœ‰ä¿¡å°çš„ç¬¬ä¸€ä¸ªåæ ‡
+        if item.x < rx0:
+            old_envelope.insert(0, Coor(rx0, rh))
+        if item.x > rx0 & item.x < rx1:
+            if item.y < rh:
+                item.y = rh
+    #     å¤„ç†åŽé¢è¶…è¿‡åŽŸæœ‰ä¿¡å°çš„æœ€åŽä¸€ä¸ªåæ ‡
 
-    for x, y in old_envelope.items():
-        print(f"x is {x}, y is {y}")
+    for item in old_envelope:
+        print(f"item is {item.x}, y is {item.y}")
 
-¶¥³ö
-Ç°ÖÃ³¬³ö
+
+# é¡¶å‡º
+# å‰ç½®è¶…å‡º
 # envelope = {1: 4, 3: 0, 4: 3, 7: 0}
-envelope = {1: 4, 3: 0, 4: 1, 7: 0}
+coor1 = Coor(1, 4)
+coor2 = Coor(3, 0)
+coor3 = Coor(4, 3)
+coor4 = Coor(7, 0)
+envelope = [coor1, coor2, coor3, coor4]
 rectangle = (2, 8, 2)
 new_envelope(envelope, rectangle)

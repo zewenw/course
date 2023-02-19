@@ -2,13 +2,15 @@ import math
 
 
 def new_sort(a, i, j):
-    print(a)
+    print(f"i = {i}  j = {j}")
     if i == j:
         return
     elif i + 1 == j:
         if a[i] > a[j]:
             a[i], a[j] = a[j], a[i]
+            print(f"i = {i}  j = {j}")
             # print(a)
+
     elif i + 2 == j:
         if a[i] > a[i + 1]:
             a[i], a[i + 1] = a[i + 1], a[i]
