@@ -107,9 +107,6 @@ def mergeTwoEnvelopes(first_env, second_env):
         return second_env
     if len_2 == 0:
         return first_env
-    # sort two arrays based on the x-axis coordinates
-    first_env = sorted(first_env, key=lambda x: x[0])
-    second_env = sorted(second_env, key=lambda x: x[0])
     # loop index for two envelopes
     i, j = 0, 0
     # result envelopes array
