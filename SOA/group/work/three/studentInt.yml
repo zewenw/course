@@ -1,0 +1,138 @@
+openapi: 3.0.3
+info:
+  title: StudentInt
+  description: Group work 3
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+  version: 1.0.0
+tags:
+  - name: student
+    description: interface involbe student object
+    externalDocs:
+      description: Find out more
+      url: http://swagger.io
+paths:
+  /student/:
+    put:
+      tags:
+        - student
+      summary: submit a assignment
+      description: submit a assignment with a specific file url
+      operationId: submit
+      requestBody:
+        description: submit a assignment with a specific file url
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Assignment'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+               type: string
+               example: preview url(http://xxx.xxx)
+        '400':
+          description: Invalid ID supplied
+        '404':
+          description: url not found
+        '405':
+          description: Validation exception
+  /student/{subNr}:
+    get:
+      tags:
+        - student
+      summary: get feedback
+      description: get feedback on a specific submission number
+      operationId: getFeedback
+      parameters:
+        - name: subNr
+          in: path
+          description: submission number
+          required: true
+          explode: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Feedback'
+            application/xml:
+              schema:
+                $ref: '#/components/schemas/Feedback'
+        '405':
+          description: Invalid input
+  /student/{id}/{moduleId}:
+    get:
+      tags:
+        - student
+      summary: get a specific student's all feedback on a specific module
+      description: get a specific student's all feedback on a specific module
+      operationId: getModuleFeedback
+      parameters:
+        - name: id
+          in: path
+          description: student id
+          required: true
+          explode: true
+          schema:
+            type: string
+        - name: moduleId
+          in: path
+          description: module id
+          required: true
+          explode: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: successful operation
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Feedback'
+            application/xml:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Feedback'
+        '400':
+          description: Invalid status value
+components:
+  schemas:
+    Assignment:
+      type: object
+      properties:
+        id:
+          type: string
+          example: student id
+        url:
+          type: string
+          example: http://xxxx.xxxx
+        dueDate:
+          type: string
+          format: date-time
+      xml:
+        name: Assignment
+    Feedback:
+      type: object
+      properties:
+        subNr:
+          type: string
+          example: submission Id
+        text:
+          type: string
+          example: xxxxxx
+        mark:
+          type: integer
+          format: int64
+          example: 75
+      xml:
+        name: Feedback
