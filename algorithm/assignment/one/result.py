@@ -7,6 +7,7 @@ env4 = [(10, 7), (15, 0)]
 
 
 # env5 = [(4,1)]
+
 def convertRectangleToEnvelope(rect):
     """
     change the representation of rectangle coordinates, for example, the new rectangel is (x1, x2, h)
