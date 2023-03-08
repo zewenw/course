@@ -1,10 +1,7 @@
-openapi: 3.0.3
+openapi: 3.0.0
 info:
   title: StudentInt
   description: Group work 3
-  license:
-    name: Apache 2.0
-    url: http://www.apache.org/licenses/LICENSE-2.0.html
   version: 1.0.0
 tags:
   - name: student
@@ -13,7 +10,7 @@ tags:
       description: Find out more
       url: http://swagger.io
 paths:
-  /student/:
+  /student:
     put:
       tags:
         - student
