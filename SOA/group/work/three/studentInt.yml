@@ -102,6 +102,46 @@ paths:
                   $ref: '#/components/schemas/Feedback'
         '400':
           description: Invalid status value
+  /file/:
+    post:
+      summary: Receive file
+      description: Receives a file stream and return a URL
+      operationId: ReceiveFile
+      parameters:
+        - name: filename
+          in: query
+          description: file name
+          required: true
+          schema:
+            type: string
+      requestBody:
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+          required: true
+      responses:
+        '200':
+          description: OK (200)
+          content:
+            application/json:
+              schema:
+                type: string
+  /file/{filename}:
+    get:
+      summary: Returns the contents of a file as a file stream
+      description: Retrieve the file from the URL
+      operationId: ReturnFile
+      responses:
+        '200':
+          description: OK (200)
+          content:
+            application/octet-stream:
+              schema:
+                type: string
+                format: binary
+
 components:
   schemas:
     Assignment:
