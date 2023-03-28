@@ -1,0 +1,22 @@
+#f - fee on switch
+#D - total investment amount
+#n - number of months
+#m - number of investment choices
+#R - return rates calculated from prices
+ 
+function best_investment(D,n,m,R,f):
+    F(i,0) = D; # default value for memoized table values
+    for i = 1 to n: # the number of months n
+        for j = 1 to m: # the number of investments m
+            for k = 1 to m: # the number of investments m
+                    maxValue = 0 # maxValue of current iteration
+                if k = i: # if index havent switched
+                    value = F(i,j-1) * R(i,j) # value without fee applied
+                else:     # if index switched
+                    value = F(i,j-1) * R(k,j) * (1-f) # value fee applied
+                if value > maxValue: # check if the previous value is more than the new maxValue
+                	maxValue = value
+            F(i,j) = maxValue # assign value the the memoized table
+        end for
+    end for
+    return max value of all the max values of the last column
