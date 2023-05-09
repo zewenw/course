@@ -7,6 +7,7 @@ def partition(arr, low, high):
             arr[i], arr[j] = arr[j], arr[i]
     arr[i + 1], arr[high] = arr[high], arr[i + 1]
     print(f'q is {i + 1}')
+    print(f'after partition, arr is {arr}')
     return i + 1
 
 
